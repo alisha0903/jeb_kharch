@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import user
+from django.contrib.auth.models import User
 
 # Create your models here.
 TYPE=( 
@@ -7,10 +7,15 @@ TYPE=(
     ('Negative','negative')
 )
 
-class Profile(request):
+class Profile(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    income=models.FloatField()
+    expense=models.FloatField(default=0)
+    balance=models.FloatField(null=True,blank=True)
 
 class Expense(models.Model):
-    name=models.charField(max_length=100)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=100)
     expense_type=models.CharField(max_length=100, choices=TYPE)
 
     def __str__(self):
