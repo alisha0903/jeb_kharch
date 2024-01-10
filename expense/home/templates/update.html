@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'edit_expense' expense_id=expense_to_edit.id %}">
+    {% csrf_token %}
+   
+    <label for="text">Text</label>
+    <input type="text" name="text" value="{{ expense_to_edit.name }}" required>
+    <br>
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" value="{{ expense_to_edit.amount }}" required>
+    <br>
+    
+    <button type="submit">Save Changes</button>
+  </form>
+  
+  {% endblock %}

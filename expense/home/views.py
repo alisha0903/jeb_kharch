@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
 # Create your views here.
 def home(request):
@@ -9,6 +9,7 @@ def home(request):
     text=request.POST.get('text')  
     amount =request.POST.get('amount')
     expense_type=request.POST.get('expense_type')
+    expense_to_update=None
     
     expense= Expense(name=text,amount=amount,expense_type=expense_type,user=request.user)
     expense.save()
@@ -21,8 +22,11 @@ def home(request):
       profile.expense+=float(amount)
       profile.balance-=float(amount)  
 
+
     profile.save()  
 
   
+  
    context = {'profile':profile, 'expenses':expenses} 
    return render(request, 'home.html',context)
+
