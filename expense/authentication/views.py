@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 
@@ -30,3 +30,8 @@ def loginPage(request):
          return HttpResponse("invalid data")  
     
    return render (request,'login.html')
+
+def logoutPage(request):
+   logout(request)
+   return redirect ('login')
+   

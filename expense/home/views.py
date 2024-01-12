@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required(login_url='login')
 def home(request):
-   profile=Profile.objects.filter(user= request.user).first()
+   #profile=Profile.objects.filter(user= request.user).first()
+   profile, created = Profile.objects.get_or_create(user=request.user)
    expenses= Expense.objects.filter(user= request.user)
 
    if request.method == 'POST':
