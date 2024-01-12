@@ -9,9 +9,9 @@ TYPE=(
 
 class Profile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    income=models.FloatField()
+    income=models.FloatField(default=0)
     expense=models.FloatField(default=0)
-    balance=models.FloatField(null=True,blank=True)
+    balance=models.FloatField(null=True,blank=True,default=0)
 
 class Expense(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)

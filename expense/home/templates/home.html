@@ -25,7 +25,7 @@
     {% for expense in expenses%}
     {% if expense.expense_type == 'Positive'%}
     <li class="plus">
-      {{expense.name}} <span>+${{expense.amount}}</span>
+      {{expense.name}} <span>+Rs{{expense.amount}}</span>
     </li>
     {% else %}
     <li class="minus">
@@ -68,7 +68,7 @@
     <button class="btn" type="submit">Add transaction</button>
   </form>
 </div>
-
+<h1>
 
 
 

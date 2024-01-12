@@ -9,7 +9,7 @@ def home(request):
     text=request.POST.get('text')  
     amount =request.POST.get('amount')
     expense_type=request.POST.get('expense_type')
-    expense_to_update=None
+    
     
     expense= Expense(name=text,amount=amount,expense_type=expense_type,user=request.user)
     expense.save()
